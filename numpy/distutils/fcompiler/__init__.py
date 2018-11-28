@@ -428,8 +428,8 @@ class FCompiler(CCompiler):
     def get_version(self, force=False, ok_status=[0]):
         assert self._is_customised
         version = CCompiler.get_version(self, force=force, ok_status=ok_status)
-        if version is None:
-            raise CompilerNotFound()
+        # if version is None:
+        #     raise CompilerNotFound()
         return version
 
 
