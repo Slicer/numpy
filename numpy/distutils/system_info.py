@@ -1919,20 +1919,12 @@ class accelerate_info(system_info):
             if (os.path.exists('/System/Library/Frameworks'
                               '/Accelerate.framework/') and
                     'accelerate' in libraries):
-                if intel:
-                    args.extend(['-msse3'])
-                else:
-                    args.extend(['-faltivec'])
                 args.extend([
                     '-I/System/Library/Frameworks/vecLib.framework/Headers'])
                 link_args.extend(['-Wl,-framework', '-Wl,Accelerate'])
             elif (os.path.exists('/System/Library/Frameworks'
                                  '/vecLib.framework/') and
                       'veclib' in libraries):
-                if intel:
-                    args.extend(['-msse3'])
-                else:
-                    args.extend(['-faltivec'])
                 args.extend([
                     '-I/System/Library/Frameworks/vecLib.framework/Headers'])
                 link_args.extend(['-Wl,-framework', '-Wl,vecLib'])
