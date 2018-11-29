@@ -167,7 +167,9 @@ _tiny_f128 = exp2(_ld(-16382))
 # Ignore runtime error when this is not f128
 with numeric.errstate(all='ignore'):
     _huge_f128 = (_ld(1) - _epsneg_f128) / _tiny_f128 * _ld(4)
-_float128_ma = MachArLike(_ld,
+with warnings.catch_warnings():
+    warnings.simplefilter("ignore")
+    _float128_ma = MachArLike(_ld,
                          machep=-112,
                          negep=-113,
                          minexp=-16382,
