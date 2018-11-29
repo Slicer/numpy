@@ -161,7 +161,9 @@ def _register_known_types():
     # Ignore runtime error when this is not f128
     with numeric.errstate(all='ignore'):
         huge_f128 = (ld(1) - epsneg_f128) / tiny_f128 * ld(4)
-    float128_ma = MachArLike(ld,
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        float128_ma = MachArLike(ld,
                              machep=-112,
                              negep=-113,
                              minexp=-16382,
